@@ -62,12 +62,20 @@ public class particle {
     }
 
     private double[] adjustPosition(double[] positionAux) {
-      /*
+        //LO VOY A HACER EN UNA CLASE APARTE
+        //HAY QUE MODIFICARLO
+        int[] vecinos;
+        ArrayList<Integer> contemplados = new ArrayList<Integer>();
+        ArrayList<Integer> exception = new ArrayList<Integer>();
+        boolean esta = false;
+        double costomenor = 9;
+        int indicecostomenor = 0;
+
       while(true)
       {
           for(int i = 0; i < 36; i++)
           {
-              if(x[i] == 1)
+              if(positionAux[i] == 1)
               {
                   vecinos = comunas.get(i);
                   for(int j = 0; j < vecinos.length; j++)
@@ -80,7 +88,7 @@ public class particle {
               }
           }
 
-          excluidos.clear();
+          exception.clear();
           for(int i = 2; i < 38; i++)
           {
               esta = false;
@@ -94,7 +102,7 @@ public class particle {
               }
               if(esta == false)
               {
-                  excluidos.add(i);
+                  exception.add(i);
               }
           }
 
@@ -105,12 +113,12 @@ public class particle {
               for(int i = 0; i < comunas.size(); i++)
               {
                   vecinos = comunas.get(i);
-                  for(int j = 0; j < excluidos.size(); j++)
+                  for(int j = 0; j < exception.size(); j++)
                   {
                       costomenor = 9;
                       for(int f = 0; f < vecinos.length; f++)
                       {
-                          if(excluidos.get(j) == vecinos[f])
+                          if(exception.get(j) == vecinos[f])
                           {
                               if(costos[i] < costomenor)
                               {
@@ -119,11 +127,11 @@ public class particle {
                               }
                           }
                       }
-                      x[indicecostomenor] = 1;
+                      positionAux[indicecostomenor] = 1;
                   }
               }
           }
-      }*/
+      }
 
       return positionAux;
           }
