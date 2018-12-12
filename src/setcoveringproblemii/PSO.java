@@ -5,6 +5,7 @@
  */
 package setcoveringproblemii;
 
+
 import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,10 +14,10 @@ import java.util.Arrays;
 public class PSO {
         private final double[] costs;
         int particulas=50;
-        //private final int iteraciones = 20; esta wea edentro del codigo pa variar y no es necesario dar una variable pa esta wea XD
+        private final ArrayList<Particle> particles = new ArrayList<Particle>();
         Area area =new Area();
-        private double mejorfitness = 999999999; //no entiendo por que tan grande
-        private double[] solucioninicial = new double[]{0,0,1,0,1,0,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1};//REVISAR misma logica de costo (0-36)
+        private float bestFit = 999999999; //no entiendo por que tan grande
+        private double[] inicialSolution = new double[]{0,0,1,0,1,0,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1};//REVISAR misma logica de costo (0-36)
 
 
 
@@ -32,32 +33,48 @@ public class PSO {
          *  CICLO DE ## 10 ## ITERACIONES
          */
         for(int i=0;i<10; i++){
-            //Particle=new Particle(mejorsolucion, mejorfitness, comunas, costos);
-            //particle.add();
-            /*
-                    for(int i = 0; i < iteraciones; i++)
-        {
-            for(Particula p : particulas)
-            {
+            Particle particle = new Particle (bestFit,inicialSolution, area, costs);
+            particles.add(particle);
+
+            for(int j=0; j < 10; j++){
+            for(Particle p : particles){
                 p.calcularFitnessyActualizarMejorSolucion();
             }
 
             actualizarMejorSolucion();
 
-            for(Particula p : particulas)
+            for(Particle p : particles)
             {
-                p.actualizarVelocidadyActualizarPosicion(mejorsolucion);
+                p.actualizarVelocidadyActualizarPosicion(inicialSolution);
             }
 
-            System.out.println("Mejor Solucion:\n" + Arrays.toString(mejorsolucion));
-            System.out.println("Mejor Fitness: " + mejorfitness);
+            System.out.println("Mejor Solucion:\n" + Arrays.toString(inicialSolution));
+            System.out.println("Mejor Fitness: " + bestFit);
             System.out.println("\n");
 
         }
-            */
+            
+
         }
+        
 
 
+    }
+        public void actualizarMejorSolucion() {
+        double aux;
+        for(Particle p : particles)
+        {
+            double auxFit = p.getFitness();
+            if(auxFit < bestFit)
+            {
+                for(int i = 0; i < 36; i++)
+                {
+                    aux = p.getMSolucion()[i];
+                    inicialSolution[i] = aux;
+                }
+                bestFit = (float) auxFit;
+            }
+        }
     }
     /***############################################################################################################
      *

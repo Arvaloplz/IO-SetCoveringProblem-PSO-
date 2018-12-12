@@ -23,5 +23,12 @@ public class SetCoveringProblemII {
     public static void main(String[] args) {
         System.out.println("Resolveremos el problema usando PSO (particle swarm optimization)");
         PSO pso=new PSO();
+        try { 
+            System.out.println("Iniciamos la busqueda");
+            PSO p = new PSO();
+            p.iniciar();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

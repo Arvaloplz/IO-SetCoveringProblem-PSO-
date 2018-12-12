@@ -24,7 +24,7 @@ public class Area {
     return area.get(n);
     }
 
-    int size() {
+    int getSize() {
        return area.size();
     }
     
