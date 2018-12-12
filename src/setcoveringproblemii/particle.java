@@ -77,7 +77,7 @@ public class particle {
           {
               if(positionAux[i] == 1)
               {
-                  vecinos = comunas.get(i);
+                  vecinos = (int[]) newArea.getComunaN(i);
                   for(int j = 0; j < vecinos.length; j++)
                   {
                       if(!contemplados.contains(vecinos[j]))
@@ -110,9 +110,9 @@ public class particle {
           {
               break;
           } else {
-              for(int i = 0; i < comunas.size(); i++)
+              for(int i = 0; i < newArea.getSize(); i++)
               {
-                  vecinos = comunas.get(i);
+                  vecinos = (int[]) newArea.getComunaN(i);
                   for(int j = 0; j < exception.size(); j++)
                   {
                       costomenor = 9;
@@ -120,10 +120,10 @@ public class particle {
                       {
                           if(exception.get(j) == vecinos[f])
                           {
-                              if(costos[i] < costomenor)
+                              if(costs[i] < costomenor)
                               {
                                   indicecostomenor = i;
-                                  costomenor = costos[i];
+                                  costomenor = costs[i];
                               }
                           }
                       }

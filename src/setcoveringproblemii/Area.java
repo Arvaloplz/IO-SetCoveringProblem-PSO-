@@ -23,5 +23,10 @@ public class Area {
     public Object getComunaN(int n){
     return area.get(n);
     }
+
+    int size() {
+       return area.size();
+    }
+    
     
 }
