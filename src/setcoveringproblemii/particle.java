@@ -15,15 +15,13 @@ import java.util.ArrayList;
 public class particle {
     Area newArea=new Area();
     private double[] costs;
-    //
-    private double[] xSolution = {0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1};
+    
+    private double[] xSolution = {0,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,1,1,0,1};
     private double[] position = {0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1};
-    //esta saltado para que cumpla con el formato planteado de vector costo.
-    //costs-> {!!!!!! 0,0 !!!!!!,1,2,1.2,1.5,3,2,1,1,3,4,3,3,2,2.5,1.5,2,2,3,2,2,3,2,3,3,1,2.5,2,3.5,3,1.5,!!!0!!!!,2,2,3.5,2,2.5,1.5};
     private double[] velocidad = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     private double xFitness;
 
-    //private final double vMax = 1;
+    private final double vMax = 6;
     //private final double inercia = 0.07;
     private  double c1 = 0.05;
     private  double c2 = 0.05;
@@ -50,7 +48,7 @@ public class particle {
             if(i==32){
               newPosition[i]=0;
             }else{
-                if(Math.random() < 6)
+                if(Math.random() < vMax)
                 {
                     newPosition[i] = 1;
                 } else {
